@@ -323,100 +323,102 @@ void main()
 			{
 				/*6. В матрице А(3-строки,4-столбца) поменять местами
 				наименьшие элементы в первой и третей строке.*/
+
 				int A[3][4], B[4], C[4], k, l;
 
 				cout << "Элементы массивы A[3][4] до перестановки: " << endl;
 				cout << endl;
 
-				k = 0;
-				l = 0;
+					k = 0;
+					l = 0;
 
-				for (i = 0; i < 3; i++)
-				{
-					for (j = 0; j < 4; j++)
+					for (i = 0; i < 3; i++)
 					{
-						A[i][j] = 10 + rand() % 70;
-						cout << A[i][j] << "\t";
-
-						if (i == 0)
+						for (j = 0; j < 4; j++)
 						{
-							B[k] = A[0][j];
-							k++;
+							A[i][j] = 10 + rand() % 70;
+							cout << A[i][j] << "\t";
+
+								if (i == 0)
+								{
+									B[k] = A[0][j];
+									k++;
+								}
+
+								if (i == 2)
+								{
+									C[l] = A[2][j];
+									l++;
+								}
+
 						}
 
-						if (i == 2)
-						{
-							C[l] = A[2][j];
-							l++;
-						}
-
+						cout << endl;
 					}
 
 					cout << endl;
-				}
 
-				cout << endl;
+					int minB, minBindex;
 
-				int minB, minBindex;
+					minB = 100000;
 
-				minB = 100000;
+						for (i = 0; i < 4; i++)
+						{
+							cout << "B[" << i << "]=" << B[i] << "  ";
 
-				for (i = 0; i < 4; i++)
-				{
-					cout << "B[" << i << "]=" << B[i] << "  ";
+								if (B[i] < minB)
+								{
+									minB = B[i];
+									minBindex = i;
+								}
 
-					if (B[i] < minB)
-					{
-						minB = B[i];
-						minBindex = i;
-					}
+							A[0][minBindex] = B[minBindex];
+						}
 
-					A[0][minBindex] = B[minBindex];
-				}
+						cout << endl;
+						cout << "B[" << minBindex << "]=" << B[minBindex] << " - минимальный элемент" << endl;
+						cout << endl;
 
-				cout << endl;
-				cout << "B[" << minBindex << "]=" << B[minBindex] << " - минимальный элемент" << endl;
-				cout << endl;
+						int minC, minCindex;
 
-				int minC, minCindex;
+						minC = 100000;
 
-				minC = 100000;
+							for (i = 0; i < 4; i++)
+							{
+								cout << "C[" << i << "]=" << C[i] << "  ";
 
-				for (i = 0; i < 4; i++)
-				{
-					cout << "C[" << i << "]=" << C[i] << "  ";
+									if (C[i] < minC)
+									{
+										minC = C[i];
+										minCindex = i;
+									}
 
-					if (C[i] < minC)
-					{
-						minC = C[i];
-						minCindex = i;
-					}
+								A[2][minCindex] = C[minCindex];
 
-					A[2][minCindex] = C[minCindex];
-				}
+							}
 
-				cout << endl;
-				cout << "C[" << minCindex << "]=" << C[minCindex] << " - минимальный элемент" << endl;
-				cout << endl;
+							cout << endl;
+							cout << "C[" << minCindex << "]=" << C[minCindex] << " - минимальный элемент" << endl;
+							cout << endl;
 
-				int temp;
+							int temp;
 
-				temp = A[0][minBindex];
-				A[0][minBindex] = A[2][minCindex];
-				A[2][minCindex] = temp;
+							temp = A[0][minBindex];
+							A[0][minBindex] = A[2][minCindex];
+							A[2][minCindex] = temp;
 
-				cout << "Элементы массивы A[3][4] после перестановки: " << endl;
-				cout << endl;
+							cout << "Элементы массивы A[3][4] после перестановки: " << endl;
+							cout << endl;
 
-				for (i = 0; i < 3; i++)
-				{
-					for (j = 0; j < 4; j++)
-					{
-						cout << A[i][j] << "\t";
-					}
+								for (i = 0; i < 3; i++)
+								{
+									for (j = 0; j < 4; j++)
+									{
+										cout << A[i][j] << "\t";
+									}
 
-					cout << endl;
-				}
+									cout << endl;
+								}
 
 				system("pause");
 				system("cls");
@@ -435,71 +437,70 @@ void main()
 				cout << "\nЭлементы массивы A[5][6]: " << endl;
 				cout << endl;
 
-				for (i = 0; i < 5; i++)
-				{
-
-					for (j = 0; j < 6; j++)
+					for (i = 0; i < 5; i++)
 					{
-						A[i][j] = 1 + rand() % 20;
-						cout << A[i][j] << "\t";
+
+							for (j = 0; j < 6; j++)
+							{
+								A[i][j] = 1 + rand() % 20;
+								cout << A[i][j] << "\t";
+
+							}
+
+						cout << endl;
 
 					}
 
 					cout << endl;
-
-				}
-
-				cout << endl;
-
-				for (i = 0; i < 5; i++)
-				{
-					max = 0;
-					min = 1000000;
-
-					for (j = 0; j < 6; j++)
-					{
-						cout << A[i][j] << "\t";
-
-						C[i] = A[i][j];
-
-						if (max < C[i]) max = C[i];
-						if (min > C[i]) min = C[i];
-
-					}
-					cout << endl;
-					cout << "Максимальный элемент " << i + 1 << " строки: " << max << endl;
-					cout << "Минимальный элемент " << i + 1 << " строки: " << min << endl;
-
-					cout << endl;
-
-				}
-
-				cout << endl;
-
-				for (j = 0; j < 6; j++)
-				{
-
-					cout << "Элементы " << j + 1 << " столбца: " << endl;
-
-					sum = 0;
 
 					for (i = 0; i < 5; i++)
 					{
-						B[i] = A[i][j];
-						cout << B[i] << "\t";
-						sum += B[i];
+						max = 0;
+						min = 1000000;
 
+							for (j = 0; j < 6; j++)
+							{
+								cout << A[i][j] << "\t";
+
+								C[i] = A[i][j];
+
+									if (max < C[i]) max = C[i];
+									if (min > C[i]) min = C[i];
+
+							}
+
+						cout << endl;
+						cout << "Максимальный элемент " << i + 1 << " строки: " << max << endl;
+						cout << "Минимальный элемент " << i + 1 << " строки: " << min << endl;
+
+					cout << endl;
 
 					}
 
-					average = sum / 5;
-					cout << endl;
-					cout << "Среднее арифметическое " << j + 1 << " столбца: " << average << endl;
-
-
 					cout << endl;
 
-				}
+					for (j = 0; j < 6; j++)
+					{
+
+						cout << "Элементы " << j + 1 << " столбца: " << endl;
+
+						sum = 0;
+
+							for (i = 0; i < 5; i++)
+							{
+								B[i] = A[i][j];
+								cout << B[i] << "\t";
+								sum += B[i];
+
+							}
+
+							average = sum / 5;
+							cout << endl;
+							cout << "Среднее арифметическое " << j + 1 << " столбца: " << average << endl;
+
+						cout << endl;
+
+					}
 
 				system("pause");
 				system("cls");
@@ -517,24 +518,25 @@ void main()
 				cout << "\nЭлементы массивы A[3][4]: " << endl;
 				cout << endl;
 
-				for (i = 0; i < 3; i++)
-				{
-					for (j = 0; j < 4; j++)
+					for (i = 0; i < 3; i++)
 					{
-						A[i][j] = 1 + rand() % 10;
-						cout << A[i][j] << "\t";
+							for (j = 0; j < 4; j++)
+							{
+								A[i][j] = 1 + rand() % 10;
+								cout << A[i][j] << "\t";
 
-						if (A[i][j] % 2 == 0) even++;
-						if (A[i][j] % 2 != 0) odd++;
+									if (A[i][j] % 2 == 0) even++;
+									if (A[i][j] % 2 != 0) odd++;
+
+							}
+
+						cout << endl;
+
 					}
 
 					cout << endl;
-
-				}
-
-				cout << endl;
-				cout << "Количество четных элементов: " << even << endl;
-				cout << "Количество нечетных элементов: " << odd << endl;
+					cout << "Количество четных элементов: " << even << endl;
+					cout << "Количество нечетных элементов: " << odd << endl;
 
 				system("pause");
 				system("cls");
@@ -549,21 +551,24 @@ void main()
 
 				int A[3][4], count = 0;
 
-				cout << "\nЭлементы массивы A[3][4]: " << endl;
-				cout << endl;
-
-				for (i = 0; i < 3; i++)
-				{
-					for (j = 0; j < 4; j++)
-					{
-						A[i][j] = 1 + rand() % 10;
-						cout << A[i][j] << "\t";
-						if (A[i][j] == 7) count++;
-					}
+					cout << "\nЭлементы массивы A[3][4]: " << endl;
 					cout << endl;
-				}
-				cout << endl;
-				cout << "Число 7 встречается " << count << " раз." << endl;
+
+						for (i = 0; i < 3; i++)
+						{
+							for (j = 0; j < 4; j++)
+							{
+								A[i][j] = 1 + rand() % 10;
+								cout << A[i][j] << "\t";
+								if (A[i][j] == 7) count++;
+							}
+
+							cout << endl;
+
+						}
+
+					cout << endl;
+					cout << "Число 7 встречается " << count << " раз." << endl;
 
 				system("pause");
 				system("cls");
@@ -581,35 +586,35 @@ void main()
 				cout << "Элементы массивы A[3][4]: " << endl;
 				cout << endl;
 
-				for (i = 0; i < 3; i++)
-				{
-					for (j = 0; j < 4; j++)
+					for (i = 0; i < 3; i++)
 					{
-						A[i][j] = 10 + rand() % 70;
-						cout << A[i][j] << "\t";
-					}
-					cout << endl;
-				}
-
-				for (i = 0; i < 3; i++)
-				{
-					for (j = 0; j < 4; j++)
-					{
-						if (min > A[i][j])
+						for (j = 0; j < 4; j++)
 						{
-							min = A[i][j];
-							mini = i;
-							minj = j;
-							C[k] = mini;
-							D[l] = minj;
-							B[k][l] = A[i][j];
-							k++;
-							l++;
+							A[i][j] = 10 + rand() % 70;
+							cout << A[i][j] << "\t";
+						}
+						cout << endl;
+					}
+
+					for (i = 0; i < 3; i++)
+					{
+						for (j = 0; j < 4; j++)
+						{
+							if (min > A[i][j])
+							{
+								min = A[i][j];
+								mini = i;
+								minj = j;
+								C[k] = mini;
+								D[l] = minj;
+								B[k][l] = A[i][j];
+								k++;
+								l++;
+							}
 						}
 					}
-				}
-				cout << endl;
-				cout << "Первый наименьший элемент: А[" << C[0] << "][" << D[0] << "]=" << B[0][0] << endl;
+					cout << endl;
+					cout << "Первый наименьший элемент: А[" << C[0] << "][" << D[0] << "]=" << B[0][0] << endl;
 
 				system("pause");
 				system("cls");
