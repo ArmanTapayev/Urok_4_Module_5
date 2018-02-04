@@ -581,7 +581,7 @@ void main()
 				/*10. Дан массив из n × m элементов.
 				Найти индексы первого наименьшего элемента массива*/
 
-				int A[3][4], B[3][4], C[4], D[4], min, mini = 0, minj = 0, k = 0, l = 0;
+				int A[3][4], min, mini=0, minj=0;
 
 				cout << "Элементы массивы A[3][4]: " << endl;
 				cout << endl;
@@ -596,31 +596,31 @@ void main()
 						cout << endl;
 					}
 
+					min = 10000000;
+
 					for (i = 0; i < 3; i++)
 					{
 						for (j = 0; j < 4; j++)
-						{
-							if (min > A[i][j])
+						{			
+
+							if (A[i][j] < min)
 							{
 								min = A[i][j];
 								mini = i;
 								minj = j;
-								C[k] = mini;
-								D[l] = minj;
-								B[k][l] = A[i][j];
-								k++;
-								l++;
 							}
+
 						}
+
 					}
+
 					cout << endl;
-					cout << "Первый наименьший элемент: А[" << C[0] << "][" << D[0] << "]=" << B[0][0] << endl;
+					cout << "Первый наименьший элемент: А[" << mini << "][" << minj << "]=" << min << endl;
 
 				system("pause");
 				system("cls");
 
 			}
-
 			break;
 
 			default:
