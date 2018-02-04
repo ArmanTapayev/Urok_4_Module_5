@@ -620,7 +620,15 @@ void main()
 				system("cls");
 
 			}
+
 			break;
+
+			default:
+			{
+				cout << "Для выхода введите 0.";
+			}
+			break;
+
 		}
 
 	} while (n != 0);
